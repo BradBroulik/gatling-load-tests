@@ -58,14 +58,14 @@ Refer to the _user-files/simulations_ directory for test examples. We have a few
 * [Web login load test (authenticated)](./user-files/simulations/web/web-twitter-authenticated-test.scala)
 
 ```java
-class ApiMessagesAuthenticatedLoadTest extends Simulation {
-    private val loadTestName = "api-messages-load-test"
+class ItunesApiAuthenticatedLoadTest extends Simulation {
+    private val loadTestName = "api-itunes-load-test"
     private val repeatTimes = 1    // How often to repeat the test scenario per user
-    private val httpProtocol = http.baseUrl("https://webqata.healthpartners.com")  
+    private val httpProtocol = http.baseUrl("https://itunes.apple.com")  
     private val users = csv("users.csv") 
     private val loadTestAPI = repeat(repeatTimes, "n") {
         exec(http(loadTestName)
-            .get("/api/messages/v1/notifications")
+            .get("/search?term=michael+jackson&limit=25")
             .basicAuth("${username}", "${password}")
         )
     }
@@ -74,7 +74,7 @@ class ApiMessagesAuthenticatedLoadTest extends Simulation {
         .exec(loadTestAPI)
 
     // Run the load test with your preferred load (rampUsers & repeatTimes) within your preferred duration (seconds)
-    setUp(scn.inject(rampUsers(400) during (240 seconds))).protocols(httpProtocol)
+    setUp(scn.inject(rampUsers(10) during (10 seconds))).protocols(httpProtocol)
 }
 ```
 
