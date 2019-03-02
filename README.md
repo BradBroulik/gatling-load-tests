@@ -18,6 +18,7 @@
 * Identify or troubleshoot performance and load issues.
 * Are your APIs and applications [C10k](https://en.wikipedia.org/wiki/C10k_problem) compliant? Determine how many concurrent users your infrastructure, APIs, and website can handle.
 * Automatically generates an exhaustive, dynamic, and colorful report with high-precision metrics.
+* Test your public APIs and applications against [Denial of Service](https://en.wikipedia.org/wiki/Denial-of-service_attack) attacks.
 
 
 <br /><a name="installation"/>
